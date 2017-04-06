@@ -1,0 +1,5 @@
+providers/
+*.tfstate*
+.terraform/
+*.swp
+crash.log
