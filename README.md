@@ -28,13 +28,13 @@ Push a new container to url (such as docker hub) and re-run `terraform apply`, i
 
 https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html
 
-Can specify DockerHub via: repository-url/image:tag
+Can specify DockerHub via: `repository-url/image` or `repository-url/image:tag`
 
-Can specify ECR via: aws_account_id.dkr.ecr.region.amazonaws.com/image:tag
+Can specify ECR via: `aws_account_id.dkr.ecr.region.amazonaws.com/image` or `aws_account_id.dkr.ecr.region.amazonaws.com/image:tag`
 
-`terraform apply -var 'docker_image=docker-training/webapp'`
+`terraform apply -var 'docker_image=training/webapp'`
 
-`terraform apply -var 'docker_image=docker-training/webapp:latest'`
+`terraform apply -var 'docker_image=training/webapp:latest'`
 
 ### Clean up
 `terraform destroy -force`
@@ -43,13 +43,16 @@ Can specify ECR via: aws_account_id.dkr.ecr.region.amazonaws.com/image:tag
 
 To spin up multiple versions of the same app use `terraform env` commands.  https://www.terraform.io/docs/state/environments.html
 
-To create a new env named dev and switch to it `terraform env new dev`
+To create a new env named dev and switch to it `terraform env new prod`
 
 To switch back to default env `terraform env select default`
 
+### tfvars files for environments
+
+Created prod.tfvars as an example.  E.g. `terraform apply -var-file="environments/prod.tfvars"`
+
 ## Next Steps
 - Autoscale up/down policies
-- Move ECS Cluster into its own module, so it could be reused for multiple applications
-- tfvar files for different environments, e.g. dev, prod, bwright, etc.
 - tag terraform_env, app_name
+- Possibly move ECS Cluster into its own module, so it could be reused for multiple applications
 

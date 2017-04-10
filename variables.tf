@@ -5,7 +5,7 @@ variable "aws_availability_zones" {
 }
 
 variable "docker_cpu" {
-  default = 100
+  default = 50
 }
 
 variable "docker_desired_count" {
